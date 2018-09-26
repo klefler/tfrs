@@ -17,15 +17,24 @@ trait Login implements Users {
   void login(Map user) {
     to LoginPage
 
+    println('******************************')
+    println(usernameField)
+    println(passwordField)
     usernameField.value(user.username)
     passwordField.value(user.password)
 
+    println(continueButton)
+
     continueButton.click()
+    println('******************************')
 
     at HomePage
   }
 
   void logInAsSendingFuelSupplier() {
+    println('###############')
+    println(getBaseUrl())
+    println('###############')
     if (getBaseUrl() =~ 'localhost') {
       setBaseUrl('http://localhost:5001/')
       to HomePage
