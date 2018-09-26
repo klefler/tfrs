@@ -18,8 +18,8 @@ stage('FT on Dev') {
     ) {
     node("develop-frontend-bddstack-${env.BUILD_NUMBER}") {
  withCredentials([
-    usernamePassword(credentialsId: SUPPLIER_ONE, usernameVariable: 'supplier_one_username', passwordVariable: 'supplier_one_password'),
-    usernamePassword(credentialsId: SUPPLIER_TWOP, usernameVariable: 'supplier_two_username', passwordVariable: 'supplier_two_password')
+    usernamePassword(credentialsId: 'SUPPLIER_ONE', usernameVariable: 'supplier_one_username', passwordVariable: 'supplier_one_password'),
+    usernamePassword(credentialsId: 'SUPPLIER_TWO', usernameVariable: 'supplier_two_username', passwordVariable: 'supplier_two_password')
 ]){
             sh '''
                 set +x
