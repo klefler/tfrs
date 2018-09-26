@@ -28,6 +28,8 @@ stage('FT on Dev') {
                '''
 }
 
+echo "supplier_one_password11=$supplier_one_password" 
+
 } //end of node
 
     } //end of podTemplate 
