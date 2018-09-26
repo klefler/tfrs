@@ -21,7 +21,6 @@ stage('FT on Dev') {
         echo "checking out source"
         echo "Build: ${BUILD_ID}"
         echo "SUPPLIER_ONE_USERNAME=${SUPPLIER_ONE_USERNAME}"
-	echo credentials('SUPPLIER_ONE_PASSWORD')
         checkout scm
         dir('functional-tests') {
 	    try {   
