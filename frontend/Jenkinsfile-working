@@ -17,13 +17,18 @@ stage('FT on Dev') {
         ]
     ) {
     node("develop-frontend-bddstack-${env.BUILD_NUMBER}") {
-    withCredentials([string(credentialsId: 'SUPPLIER_ONE_PASSWORDWW', variable: 'SUPPLIER_ONE_PASSWORDWW')]) {
+ withCredentials([
+    usernamePassword(credentialsId: SUPPLIER_ONE, usernameVariable: 'supplier_one_username', passwordVariable: 'supplier_one_password'),
+    usernamePassword(credentialsId: SUPPLIER_TWOP, usernameVariable: 'supplier_two_username', passwordVariable: 'supplier_two_password')
+]){
             sh '''
                 set +x
-                echo "$SUPPLIER_ONE_PASSWORDWW" 
+                echo "supplier_one_password=$supplier_one_password" 
+                echo "supplier_two_password=$supplier_two_password" 
                '''
- }
+}
 
-    }
+} //end of node
+
     } //end of podTemplate 
 } //end of stage
