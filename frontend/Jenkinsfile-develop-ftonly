@@ -1,12 +1,13 @@
 
 stage('FT on Dev') {
 
+    //image: '172.50.0.2:5000/mem-tfrs-tools/bddstack-tfrs:latest'
     
     podTemplate(label: "develop-frontend-bddstack-${env.BUILD_NUMBER}", name: "develop-frontend-bddstack-${env.BUILD_NUMBER}", serviceAccount: 'jenkins', cloud: 'openshift',
         containers: [
             containerTemplate(
                 name: 'jnlp',
-                image: '172.50.0.2:5000/mem-tfrs-tools/bddstack-tfrs:latest',
+		image: 'docker-registry.default.svc:5000/openshift/jenkins-slave-bddstack',
                 resourceRequestCpu: '500m',
                 resourceLimitCpu: '1000m',
                 resourceRequestMemory: '2Gi',
