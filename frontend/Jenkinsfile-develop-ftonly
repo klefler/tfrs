@@ -22,11 +22,13 @@ stage('FT on Dev') {
         checkout scm
         dir('functional-tests') {
 	    try {   
-                withCredentials([string(credentialsId: 'FUNCTIONAL-TEST-PASSWORD', variable: 'functional-test-password')]) {
+                withCredentials([string(credentialsId: 'FUNCTIONAL-TEST-PASSWORD', variable: 'tpassword')]) {
+		}
                     sh '''
-			echo $functional-test-password
-                    ''' 
-                }
+		        echo "sdssdsd"
+			echo $tpassword
+			echo "BBBBB"
+                    '''
 	    } finally {
 		archiveArtifacts allowEmptyArchive: true, artifacts: 'build/reports/**/*'
                 archiveArtifacts allowEmptyArchive: true, artifacts: 'build/test-results/**/*'
