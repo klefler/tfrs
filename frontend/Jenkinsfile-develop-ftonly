@@ -22,13 +22,20 @@ stage('FT on Dev') {
         checkout scm
         dir('functional-tests') {
 	    try {   
-                withCredentials([string(credentialsId: 'FUNCTIONAL-TEST-PASSWORD', variable: 'tpassword')]) {
-		}
+                withCredentials([string(credentialsId: 'FUNCTIONAL-TEST-PASSWORD', variable: 'ftpassword')]) {
                     sh '''
-		        echo "sdssdsd"
-			echo $tpassword
-			echo "BBBBB"
+    			export SUPPLIER_ONE_USERNAME=bdd-fuelsupplier1
+                        export SUPPLIER_ONE_PASSWORD=${ftpassword}
+                        export SUPPLIER_TWO_USERNAME=fuelsupplier2
+                        export SUPPLIER_TWO_PASSWORD=${ftpassword}
+                        export SUPPLIER_TWO_ORG="TFRS IMBeing Green"
+                        export ANALYST_USERNAME=bdd-analyst
+                        export ANALYST_PASSWORD=${ftpassword}
+                        export DIRECTOR_USERNAME=bdd-director
+                        export DIRECTOR_PASSWORD=${ftpassword}
+                        ./gradlew --info --stacktrace chromeHeadlessTest
                     '''
+		    }
 	    } finally {
 		archiveArtifacts allowEmptyArchive: true, artifacts: 'build/reports/**/*'
                 archiveArtifacts allowEmptyArchive: true, artifacts: 'build/test-results/**/*'
