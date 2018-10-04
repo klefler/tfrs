@@ -24,7 +24,7 @@ stage('FT on Dev') {
 	    try {   
                 withCredentials([string(credentialsId: 'FUNCTIONAL-TEST-PASSWORD', variable: 'functional-test-password')]) {
                     sh '''
-			echo ${functional-test-password}
+			echo $functional-test-password
                     ''' 
                 }
 	    } finally {
