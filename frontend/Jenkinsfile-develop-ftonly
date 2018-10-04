@@ -24,16 +24,7 @@ stage('FT on Dev') {
 	    try {   
                 withCredentials([string(credentialsId: 'FUNCTIONAL-TEST-PASSWORD', variable: 'functional-test-password')]) {
                     sh '''
-                        export SUPPLIER_ONE_USERNAME=bdd-fuelsupplier1
-                        export SUPPLIER_ONE_PASSWORD=${functional-test-password}
-                        export SUPPLIER_TWO_USERNAME=fuelsupplier2
-                        export SUPPLIER_TWO_PASSWORD=${functional-test-password}
-                        export SUPPLIER_TWO_ORG="TFRS IMBeing Green"
-                        export ANALYST_USERNAME=bdd-analyst
-                        export ANALYST_PASSWORD=${functional-test-password}
-                        export DIRECTOR_USERNAME=bdd-director
-                        export DIRECTOR_PASSWORD=${functional-test-password}
-                        ./gradlew --info --stacktrace chromeHeadlessTest
+			echo ${functional-test-password}
                     ''' 
                 }
 	    } finally {
