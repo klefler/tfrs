@@ -4,6 +4,7 @@ pipeline {
         stage('Test init') {
         steps {
                 script {
+                    echo 'sssssss'
                 } //end of script
         } //end of steps
         } //end od stage
