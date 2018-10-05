@@ -4,7 +4,8 @@ pipeline {
         stage('Test init') {
         steps {
                 script {
-                }
-        }
-    }
-}
+                } //end of script
+        } //end of steps
+        } //end od stage
+    } //end of stages
+} //end of pipeline
