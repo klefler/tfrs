@@ -1,11 +1,10 @@
 pipeline {
     agent none
     stages {
-        stage('Test init') {steps {
+        stage('Test init') {
         steps {
                 script {
                 }
-        }
         }
     }
 }
