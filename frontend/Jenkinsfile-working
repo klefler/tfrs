@@ -2,7 +2,6 @@ pipeline {
     agent none
     stages {
         stage('Test init') {
-		echo "test init"
         }
     }
 }
